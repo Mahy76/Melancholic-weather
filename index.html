@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather</title>
+    <meta charset="UTF-8" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Satisfy&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg">
+        <div class="icon-title">Weather</div>
+        <div class="collapse navbar-collapse" id="navbarColor02">
+          <ul class="navbar-nav mr-auto"></ul>
+          <div class="d-flex flex-row-reverse">
+            <form class="d-flex search-form" role="search">
+              <input
+                class="form-control me-2 search-input"
+                type="search"
+                placeholder="Search"
+              />
+              <button class="btn btn-outline-info search-button" type="submit">
+                Search
+              </button>
+            </form>
+            <button class="btn btn-outline-info current-button">Current</button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="title">
+        <div class="row"></div>
+        <div class="col-6 city-name">Bojnord</div>
+
+        <div class="col-12 temperature" id="time">Friday 19 November</div>
+      </div>
+
+      <div class="row">
+        <div class="col-6 current">
+          <div class="centered current-temp">11°</div>
+        </div>
+        <div class="col-2 info">
+          High
+          <div class="detail info-high">15°</div>
+        </div>
+        <div class="col-2 info">
+          Wind
+          <div class="detail info-wind">20mph</div>
+        </div>
+        <div class="col-2 info">
+          Sunset
+          <div class="detail info-sunset">05:30</div>
+        </div>
+        <div class="col-6 current"></div>
+        <div class="col-2 info">
+          Low
+          <div class="detail info-low">9°</div>
+        </div>
+        <div class="col-2 info">
+          Humidity
+          <div class="detail info-humidity">%65</div>
+        </div>
+        <div class="col-2 info">
+          Sunrise
+          <div class="detail info-sunrise">17:34</div>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="row row-cols-1 row-cols-md-6 g-6">
+        <div class="col">
+          <div class="card h-100">
+            <img src="images/rain (1).png" class="card-img-top" width="50px" />
+            <div class="card-body">
+              <h5 class="card-title">21°</h5>
+              <p class="card-text">Saturday</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="images/rain (1).png" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">11°</h5>
+              <p class="card-text">Sunday</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="images/rain (2).png" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">15°</h5>
+              <p class="card-text">Monday</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="images/hail.png" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">18°</h5>
+              <p class="card-text">Tuesday</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="images/rain.png" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">13°</h5>
+              <p class="card-text">Wednesday</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="images/hail.png" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">12°</h5>
+              <p class="card-text">Thuesday</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      //javascript
+      let now = new Date();
+      //challenge2
+
+      //change the city
+      function showTemp(response) {
+        let city = document.querySelector(".city-name");
+        city.innerHTML = response.data.name;
+        //current temperature
+        let tempInfo = document.querySelector(".current-temp");
+        tempInfo.innerHTML = `${Math.round(response.data.main.temp)}°C`;
+        //max
+        let infoHigh = document.querySelector(".info-high");
+        infoHigh.innerHTML = `${Math.round(response.data.main.temp_max)}°C`;
+        //min
+        let infoMin = document.querySelector(".info-low");
+        infoMin.innerHTML = `${Math.round(response.data.main.temp_min)}°C`;
+        //wind
+        let infoWind = document.querySelector(".info-wind");
+        infoWind.innerHTML = response.data.wind.speed;
+        //humidity
+        let infoHumid = document.querySelector(".info-humidity");
+        infoHumid.innerHTML = `%${response.data.main.humidity}`;
+        //sunrise
+        // let infoSunrise = document.querySelector(".info-sunrise");
+        // infoSunrise.innerHTML = response.data.sys.sunrise;
+        //sunset
+        // let infoSunset = document.querySelector(".info-sunset");
+        // infoSunset.innerHTML = response.data.sys.sunset;
+        let days = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        let day = days[now.getDay()];
+        let hour = now.getHours();
+        let minute = now.getMinutes();
+        let dateZone = document.querySelector(".temperature");
+        dateZone.innerHTML = `${day} ${hour}:${minute}`;
+        return dateZone;
+      }
+      function showGeo(position) {
+        let apiKey = "2e7e091265eeaa3a9e23a73ffdcec37b";
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+        axios.get(apiUrl).then(showTemp);
+      }
+      function getCurrentPosition() {
+        navigator.geolocation.getCurrentPosition(showGeo);
+      }
+      let currentButton = document.querySelector(".current-button");
+      currentButton.addEventListener("click", getCurrentPosition);
+      //search Button
+
+      function searchCity(response) {
+        event.preventDefault();
+        let apiKey = "2e7e091265eeaa3a9e23a73ffdcec37b";
+        let city = document.querySelector(".search-input");
+        let cityName = document.querySelector(".city-name");
+        cityName.innerHTML = city.value;
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&units=metric&appid=${apiKey}`;
+        axios.get(apiUrl).then(showTemp);
+      }
+      let searchInput = document.querySelector(".search-form");
+      searchInput.addEventListener("submit", searchCity);
+    </script>
+  </body>
+</html>

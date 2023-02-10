@@ -1,0 +1,77 @@
+.container {
+  margin: 0 auto;
+  padding: 60pxpx 60px;
+}
+.centered {
+  color: #0d4c92;
+  margin: auto;
+}
+img {
+  border-color: #0d4c92;
+}
+.city-name {
+  color: #0d4c92;
+  font-size: 30px;
+  font-weight: 500;
+}
+.temperature {
+  font-size: 15px;
+  font-weight: 300;
+  color: grey;
+  margin-top: 5px;
+  font-family: "Roboto", sans-serif;
+}
+.icon-title {
+  font-family: "Pacifico", cursive;
+  font-family: "Satisfy", cursive;
+  font-size: 30px;
+  color: #0d4c92;
+  margin-left: 15px;
+  margin-top: 10px;
+  padding-right: 65%;
+}
+.navbar-light {
+  background-color: #e3f2fd;
+}
+.current {
+  color: #0d4c92;
+  font-size: 50px;
+}
+.detail {
+  color: #81878d;
+}
+.detail,
+.info {
+  text-align: center;
+}
+.overlay-img {
+  margin-top: 20px;
+}
+.row {
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+}
+.card-img-top {
+  width: 100px;
+  padding: 7px;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+.card-title,
+.card-text {
+  text-align: center;
+}
+h4 {
+  font-family: "Roboto", sans-serif;
+}
+.search-input {
+  position: static;
+  width: auto;
+  margin-right: 15px;
+}
+.current-button {
+  margin-right: 10px;
+  display: inline;
+}
